@@ -2,6 +2,45 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+var articleOne={title:'Article one |Ravi varma',
+    heading:'Article one',
+    date:'Feb 14 2018',
+    content:`<p> this is article one</p>
+             <p>I am creating article one</p>`
+};
+function createtemplate(data){
+var title=data.title;
+var heading=data.heading;
+var date=data.date;
+var content=data.content;
+var htmltemplate=`
+<html>
+    <head>
+        <title>
+           ${title} 
+        </title>
+    </head>
+    <body>
+        <div>
+            <a href="/">Home</a>
+        </div>
+        <hr/>
+        <h3>
+            ${heading}
+        </h3>
+        <div>
+            ${date}
+        </div>
+        <div>
+            <p>
+               ${content}
+            </p>
+        </div>
+    </body>
+</html>`;
+return htmltemplate;
+    
+}
 var app = express();
 app.use(morgan('combined'));
 
@@ -18,7 +57,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/article-one',function(req,res){
-    res.send('Article one is reqested and served here');
+    res.send(createtemplate(articleone));
 });
 
 app.get('/article-two',function(req,res){
