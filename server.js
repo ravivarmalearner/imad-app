@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 
 var articles={
- 'article-One':{
+ 'article-one':{
     title:'Article one |Ravi varma',
     heading:'Article one',
     date:'Feb 14 2018',
