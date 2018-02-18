@@ -28,5 +28,3 @@ submit.onclick= function(){
     ul.innerHTML=list;
 };
 
-<script type="text/javascript" src="ui/main.js">
-</script>
