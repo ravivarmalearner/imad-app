@@ -3,7 +3,7 @@ var counter=0;
 button.onclick = function(){
     
     var request= new XMLHttpRequest();
-    
+    var name=
     request.onreadystatechange= function(){
         if(request.readystate===XMLHttpRequest.DONE&&request.status===200){
             var counter=request.responseText;
@@ -12,7 +12,7 @@ button.onclick = function(){
         }
         
     };
-     request.open('GET','http://bmravivarmapatchamatla.imad.hasura-app.io/counter',true);
+     request.open('GET','http://bmravivarmapatchamatla.imad.hasura-app.io/name-req?name=' + name,true);
     request.send(null);
 };
 var nameInput=document.getElementById('name');
