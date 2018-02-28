@@ -8,7 +8,7 @@ var config={
     database:'bmravivarmapatchamatla',
     host:'db.imad.hasura-app.io',
     port:'5432',
-    password:db-bmravivarmapatchamatla-10199
+    password:process.env.DB_PASSWORD
 };
 var articles={
  'article-one':{
