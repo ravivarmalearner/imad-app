@@ -102,17 +102,7 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/test-db',function(req,res){
-    pool.query('select * from test',function(err,result){
-        if(err){
-            res.status(500).send(err.toString());
-        }
-        else{
-        res.send (JSON.stringify(result.rows));   
-        }
-    });
-    
-});
+
 
 
 
