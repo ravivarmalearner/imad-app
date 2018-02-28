@@ -74,7 +74,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-var pool=new Pool(config);
 var counter=0;
 app.get('/counter', function (req, res) {
   counter=counter+1;
