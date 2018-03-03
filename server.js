@@ -101,9 +101,21 @@ app.get('/name-req/:name',function(req,res){
     names.push(name);
     res.send(JSON.stringify(names));
 });
-app.get('/:articleName',function(req,res){
-   var articleName = req.params.articleName; 
-    res.send(createtemplate(articles[articleName]))
+app.get('articles/:articleName',function(req,res){
+  
+  var articleName = req.params.articleName;
+  pool.query("SELECT * from articles WHERE title="+articleName,function(err,result){
+      if(err){
+          res.status(500).send(err.toString());
+      } else{
+          if(result.rows.length === 0) {
+              res.status(404).send("article not found");
+          } else {
+              var articleData= result.rows[0];
+               res.send(createtemplate(articleData))
+          }
+      }
+   });
 });
 
 app.get('/ui/style.css', function (req, res) {
