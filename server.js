@@ -101,7 +101,7 @@ app.get('/name-req/:name',function(req,res){
     names.push(name);
     res.send(JSON.stringify(names));
 });
-app.get('articles/:articleName',function(req,res){
+app.get('/articles/:articleName',function(req,res){
   
   var articleName = req.params.articleName;
   pool.query("SELECT * from articles WHERE title='"+articleName+"'",function(err,result){
