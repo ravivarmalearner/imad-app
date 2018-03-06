@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool=require('pg').Pool;
+const crypto = require('crypto');
 
 var config={
     user:'bmravivarmapatchamatla',
@@ -74,6 +75,21 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+function hash(input,salt){
+    //how do we create hash
+    var hashed=crypto.pbkdf2Sync(input, salt, 100000, 64, 'sha512');
+   return  ["pbkdf2Sync","10000",salt,hashed.toString('hex')].join('$'); 
+
+}
+
+app.get('/hash/:input',function(req,res){
+    var hashedstring=hash(req.params.input,'this is some string');
+    return hashedstring;
+});
+
+app.get('/create-user',function(req,res){
+    
+});
 var pool = new Pool(config);
 
 app.get('/test-db1',function(req,res){
