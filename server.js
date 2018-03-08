@@ -92,13 +92,13 @@ app.post('/create-user',function(req,res){
    var username=req.body.username;
    var password=req.body.password;
     var salt=crypto.getrandomBytes(128).toString('hex');
-    var dbstring=hash(password,salt);
-    pool.query('INSERT in to "users"(username,password) VALUES ($1,$2)',[username,dbstring],function(err,result){
+    var dbstring = hash(password,salt);
+    pool.query('INSERT INTO "users"(username,password) VALUES ($1,$2)',[username,dbstring],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }
         else{
-        res.send ('user succesfully created');   
+        res.send ('user succesfully created'+username);   
         }
         
     })
